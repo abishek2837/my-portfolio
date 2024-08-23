@@ -1,95 +1,69 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { Fragment } from "react";
+import dynamic from "next/dynamic";
+import About from "../sections/about";
+import Education from "../sections/education";
+import Experience from "../sections/experience";
+const Navbar = dynamic(() => import("../layout/navbar/Navbar"))
+const Footer = dynamic(() => import("../layout/footer/Footer"))
+const Intro = dynamic(() => import("../sections/Intro"))
+const Skills = dynamic(() => import("../sections/Skills"))
+const Projects = dynamic(() => import("../sections/Projects"))
+const SendMail = dynamic(() => import("../utils/SendMail"))
+const SocialMedia = dynamic(() => import("../utils/SocialMedia"))
 
-export default function Home() {
+export const metadata = {
+  title: "Abishek's Portfolio",
+  description: "Explore the best Next.js and React.js portfolio by Abishek Poddar. Featuring simple, dark and light theme designs and mobile responsiveness.",
+  keywords: ["portfolio", "Next.js", "React.js", "web development", "dark theme", "light theme", "best portfolio github", "best next js portfolio", "how to make a portfolio", "best react js portfolio github", "best react js portfolio", "best next js portfolio", "react js developer in biratnager", "react js developer in nepal", "react js developer in morang", "react js developer in kathmandu"],
+  url: "https://abishekpoddar.com.np",
+  openGraph: {
+    title: "Abhishek's Portfolio",
+    description: "Passionate and driven ReactJS developer with a strong foundation in NextJS. Dedicated to creating dynamic and user-centric web applications. Eager to contribute my expertise in frontend frameworks, modern UI/UX design, and responsive development to a forward-thinking team, while continuouslylearning and growing in the ever-evolving world of web development.",
+    url: "https://abishekpoddar.com.np/#about",
+    images: [
+      {
+        url: "images/myimage/myimage.jpg",
+        width: 800,
+        height: 600,
+        alt: "About Us",
+      },
+    ],
+  },
+};
+
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
+    <Fragment>
+      <div>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          {/* Desktop Navbar */}
+          <Navbar />
+          {/* Welcome Page */}
+          <Intro />
+          {/* About */}
+          <About />
+          {/* Skills  */}
+          <Skills />
+          {/* Education */}
+          <Education />
+          {/* Experience */}
+          <Experience />
+          {/* Projects */}
+          <Projects />
+          {/* SocialMedia */}
+          <SocialMedia />
+          {/* LatestBlog */}
+          {/* <LatestBlogs /> */}
+          {/* Apps */}
+          {/* <Apps /> */}
+          {/* Send Mail */}
+          <SendMail />
+          {/* Footer */}
+          <Footer />
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </Fragment>
   );
 }
+
+export default Home

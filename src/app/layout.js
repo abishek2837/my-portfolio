@@ -1,5 +1,11 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../../public/styles/globals.css";
+import "../../public/styles/Home.module.css";
+import "../../public/styles/animation.css";
+import "../../public/styles/cssGrid.css";
+import PortfolioProvider from "@/contextApi/PortfolioContext";
+import { Toaster } from "react-hot-toast";
+import ThemeProvider from "@/context/themeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +17,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <PortfolioProvider>
+          <ThemeProvider>
+            {children}
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                style: {
+                  border: "1px solid #713200",
+                  padding: "16px",
+                  color: "#713200",
+                },
+              }}
+            />
+          </ThemeProvider>
+        </PortfolioProvider>
+      </body>
     </html>
   );
 }
